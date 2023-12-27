@@ -1,8 +1,16 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('p_cgmo','postgres','root',{
+const sequelize = new Sequelize('bdglobant','postgres','root',{
     host: 'localhost',
     dialect: 'postgres',
 });
 
-module.exports = sequelize
+sequelize.authenticate()
+  .then(() => {
+    console.log('entro');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+module.exports = sequelize;
