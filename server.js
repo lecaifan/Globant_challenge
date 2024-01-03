@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/Globant', apiRoutes);
+app.use('/globant', apiRoutes);
 
 // el force es para que no elimine y vuelva crear las tablas
 sequelize.sync({ force: false }).then(() => {
