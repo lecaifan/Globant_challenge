@@ -1,6 +1,6 @@
 # Globant_challenge
 
-Este proyecto es una API REST local que facilita la migración de datos históricos desde archivos CSV a una base de datos PostgreSQL. Proporciona endpoints para cargar archivos CSV y realizar inserciones masivas por lotes.
+Este proyecto es una API REST local que realiza la migración de datos históricos desde archivos CSV a una base de datos PostgreSQL. Proporciona endpoints para cargar archivos CSV, realizar inserciones masivas por lotes y consultar queries.
 
 ## Configuración
 
@@ -25,3 +25,6 @@ Este proyecto es una API REST local que facilita la migración de datos históri
 
 3. Inicia la aplicacion
     npm start
+
+4. Las rutas que se pueden consultar son:
+    

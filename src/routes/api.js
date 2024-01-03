@@ -10,5 +10,5 @@ router.post('/insertEmployees', uploadBatchController.uploadBatchController);
 router.post('/insertJobs', uploadBatchController.uploadBatchController);
 router.post('/insertDepartments', uploadBatchController.uploadBatchController);
 router.get('/employeesHiredPerQuarter',queriesController.employeesHiredPerQuarter)
-router.post('/employeesHiredPerDepartment')
+router.get('/employeesHiredPerDepartment',queriesController.employeesHiredPerDepartment)
 module.exports = router;

@@ -40,6 +40,38 @@ const employeesHiredPerQuarter = async(req,res) =>{
       }
 };
 
+const employeesHiredPerDepartment = async(req,res) =>{
+  try {
+      const result = await sequelize.query(`
+      SELECT 
+      d.id,d.department,count(e.id) as hired
+      FROM p_cgmo.employees e
+      LEFT JOIN p_cgmo.departments d on (d.id=e.department_id)
+      WHERE EXTRACT(YEAR FROM e.hired_datetime)=2021
+      GROUP BY d.id,d.department
+      HAVING COUNT(e.id)> (
+          SELECT
+            ROUND(AVG(empleados_per_dept), 0) AS average_hired
+          FROM
+            (SELECT
+              COUNT(e.id) AS empleados_per_dept
+            FROM
+              p_cgmo.employees e
+            WHERE
+              EXTRACT(YEAR FROM e.hired_datetime) = 2021
+            GROUP BY
+              e.department_id) AS department_counts
+      )
+      order by hired desc      
+      `, { type: sequelize.QueryTypes.SELECT });
+  
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error del servidor' });
+    }
+};
 module.exports = {
-    employeesHiredPerQuarter
+    employeesHiredPerQuarter,
+    employeesHiredPerDepartment
 }
