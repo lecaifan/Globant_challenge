@@ -2,10 +2,10 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database/db');
 
 
-const Employee = sequelize.define('employee',{
+const EmployeeRejected = sequelize.define('employeerejected',{
     id :{
         type:DataTypes.INTEGER,
-        primaryKey:true,
+        primaryKey:true
     },
     name:{
         type:DataTypes.STRING
@@ -24,6 +24,7 @@ const Employee = sequelize.define('employee',{
 },{
     schema:'p_cgmo',
     timestamps:false
+
 });
 
-module.exports=Employee;
+module.exports=EmployeeRejected;

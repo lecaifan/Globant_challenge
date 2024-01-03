@@ -5,6 +5,8 @@ const uploadCsvController = require('../controllers/uploadCsvController');
 const router = express.Router();
 
 router.post('/upload',uploadCsvController.uploadCsv ,uploadCsvController.uploadCsvController);
-router.post('/batch-insert', uploadBatchController.uploadBatchController);
+router.post('/insertEmployees', uploadBatchController.uploadBatchController);
+router.post('/insertJobs', uploadBatchController.uploadBatchController);
+router.post('/insertDepartments', uploadBatchController.uploadBatchController);
 
 module.exports = router;

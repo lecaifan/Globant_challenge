@@ -9,19 +9,10 @@ const Job = sequelize.define('job',{
     },
     job:{
         type:DataTypes.STRING
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-      },
+    }
 },{
-    schema:'p_cgmo'
+    schema:'p_cgmo',
+    timestamps:false
 });
 
 module.exports=Job;
