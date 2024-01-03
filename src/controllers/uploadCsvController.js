@@ -6,9 +6,12 @@ const Department = require('../models/department'); // Importa tu modelo de depa
 const Job = require('../models/job'); // Importa tu modelo de trabajo
 const Employee = require('../models/employee'); // Importa tu modelo de empleado
 const EmployeeRejected = require('../models/employeerejected')
-const uploadCsv = upload.single('csvFile');
 const moment = require('moment');
 const {formatISO,format} = require ('date-fns');
+
+
+const uploadCsv = upload.single('csvFile');
+
 
 const uploadCsvController = async(req,res) => {
     try {
