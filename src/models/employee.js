@@ -11,9 +11,8 @@ const Employee = sequelize.define('employee',{
         type:DataTypes.STRING
     },
     hired_datetime:{
-        type:DataTypes.STRING,
-        allowNull:true
-    },
+        type:DataTypes.DATE
+        },
     department_id:{
         type:DataTypes.INTEGER
     },

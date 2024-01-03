@@ -11,7 +11,7 @@ const EmployeeRejected = sequelize.define('employeerejected',{
         type:DataTypes.STRING
     },
     hired_datetime:{
-        type:DataTypes.STRING,
+        type:DataTypes.DATE,
         allowNull:true
     },
     department_id:{

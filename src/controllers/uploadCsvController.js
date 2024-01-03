@@ -8,6 +8,7 @@ const Employee = require('../models/employee'); // Importa tu modelo de empleado
 const EmployeeRejected = require('../models/employeerejected')
 const uploadCsv = upload.single('csvFile');
 const moment = require('moment');
+const {formatISO,format} = require ('date-fns');
 
 const uploadCsvController = async(req,res) => {
     try {
@@ -30,6 +31,13 @@ const uploadCsvController = async(req,res) => {
         .on('end', async()=>{
             await insertIntoDatabase(data, req.file.originalname);
             fs.unlinkSync(filePath);
+            //console.log((data.map((row) => ({
+            //   id:row[0] || null,
+            //    name:row[1],
+             //   hired_datetime:row[2],
+             //   department_id:row[3] || null,
+             //   job_id:row[4] ||null ,
+            //}))))
             res.status(200).json({message:"Se subio el archivo y se cargo en la base de datos "});
         })
         //mensaje de ok
@@ -44,11 +52,13 @@ const insertIntoDatabase = async (data,fileName) =>{
         case 'hired_employees.csv':
             const employeeData = data.filter(row => row[0]!==''&&
             row[1]!==''&&
+            row[2]!==''&&
             row[3]!==''&&
             row[4]!==''
                 )
             const employeeRejectedData = data.filter(row => row[0]===''||
             row[1]===''||
+            row[2]===''||
             row[3]===''||
             row[4]===''
                 )   
@@ -63,8 +73,8 @@ const insertIntoDatabase = async (data,fileName) =>{
 
             await EmployeeRejected.bulkCreate(employeeRejectedData.map((row) => ({
                 id:row[0] || null,
-                name:row[1],
-                hired_datetime:row[2],
+                name:row[1] || null,
+                hired_datetime:row[2]|| null,
                 department_id:row[3] || null,
                 job_id:row[4] ||null ,
             })));
